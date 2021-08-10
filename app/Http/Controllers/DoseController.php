@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dose;
+use App\Models\HealthFacility;
+use App\Models\HealthProfessional;
+use App\Models\Vaccine;
 use Illuminate\Http\Request;
 
 class DoseController extends Controller
@@ -22,9 +25,14 @@ class DoseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+
+        $facilities = HealthFacility::all();
+        $professionals = HealthProfessional::all();
+        $vaccines = Vaccine::all();
+        $id = $request->patient;
+        return view('dose.create',['patient'=>$id,'professionals'=>$professionals,'facilities'=>$facilities,'vaccines'=>$vaccines]);
     }
 
     /**
@@ -35,7 +43,15 @@ class DoseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dose = Dose::create([
+            'dose_number'=>$request->dose,
+            'health_professional_id'=>$request->professional,
+            'health_facility_id'=>$request->facility,
+            'vaccine_id'=>$request->vaccine,
+            'patient_profile_id'=>$request->patient
+        ]);
+
+        return redirect(route('patients'));
     }
 
     /**

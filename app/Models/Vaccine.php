@@ -9,6 +9,13 @@ class Vaccine extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'country_of_origin',
+        'efficacy',
+        'batch_number'
+    ];
+
     /**
      * Dose
      */

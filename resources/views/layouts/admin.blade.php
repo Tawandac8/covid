@@ -17,6 +17,22 @@
   <!-- Page plugins -->
   <!-- Argon CSS -->
   <link rel="stylesheet" href="{{ asset('admin/css/argon.css?v=1.2.0') }}" type="text/css">
+  @yield('styles')
+
+  <style>
+      .logout-form{
+          display:block;
+          width: 100%;
+      }
+
+      .logout-form button{
+          width: 100%;
+          background: none;
+          border:none;
+          text-align: left;
+          padding-left:20px;
+      }
+      </style>
 </head>
 
 <body>
@@ -25,8 +41,8 @@
     <div class="scrollbar-inner">
       <!-- Brand -->
       <div class="sidenav-header  align-items-center">
-        <a class="navbar-brand" href="javascript:void(0)">
-          <img src="assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
+        <a class="navbar-brand" href="{{ route('welcome') }}">
+          <h3>HEALTH SYSTEM</h3>
         </a>
       </div>
       <div class="navbar-inner">
@@ -41,29 +57,41 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
-                <i class="ni ni-planet text-orange"></i>
-                <span class="nav-link-text">Covid 19</span>
-              </a>
-            </li>
+                <a class="nav-link" href="{{ route('vaccines') }}">
+                  <i class="ni ni-planet text-orange"></i>
+                  <span class="nav-link-text">Vaccine</span>
+                </a>
+              </li>
+              @role('admin')
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('facilities') }}">
                   <i class="ni ni-planet text-orange"></i>
                   <span class="nav-link-text">Health Facilities</span>
                 </a>
               </li>
+              @endrole
+              @role('admin')
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('professionals') }}">
                   <i class="ni ni-planet text-orange"></i>
                   <span class="nav-link-text">Health Practitioners</span>
                 </a>
               </li>
+              @endrole
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('patients') }}">
                   <i class="ni ni-planet text-orange"></i>
                   <span class="nav-link-text">Patients</span>
                 </a>
               </li>
+              @role('admin')
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('users') }}">
+                  <i class="ni ni-planet text-orange"></i>
+                  <span class="nav-link-text">Users</span>
+                </a>
+              </li>
+              @endrole
 
           </ul>
 
@@ -254,7 +282,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="media align-items-center">
-                 
+
                   <div class="media-body  ml-2  d-none d-lg-block">
                     <span class="mb-0 text-sm  font-weight-bold">{{ Auth::user()->name }}</span>
                   </div>
@@ -281,10 +309,8 @@
                   <span>Support</span>
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#!" class="dropdown-item">
-                  <i class="ni ni-user-run"></i>
-                  <span>Logout</span>
-                </a>
+                <form class="logout-form" action="{{ route('logout') }}" method="post">@csrf<button type="submit"><i class="ni ni-user-run"></i> Logout</button></form>
+
               </div>
             </li>
           </ul>
@@ -305,6 +331,7 @@
   <script src="{{ asset('admin/vendor/chart.js/dist/Chart.extension.js')}}"></script>
   <!-- Argon JS -->
   <script src="{{ asset('admin/js/argon.js?v=1.2.0')}}"></script>
+  @yield('scripts')
 </body>
 
 </html>

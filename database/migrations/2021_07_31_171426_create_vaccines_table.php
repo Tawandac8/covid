@@ -18,7 +18,7 @@ class CreateVaccinesTable extends Migration
             $table->timestamps();
             $table->string('name');
             $table->string('country_of_origin');
-            $table->float('efficacy',2,2);
+            $table->float('efficacy',5,2);
             $table->string('batch_number')->nullable();
         });
     }

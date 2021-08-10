@@ -9,6 +9,14 @@ class Dose extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'dose_number',
+        'health_professional_id',
+        'health_facility_id',
+        'vaccine_id',
+        'patient_profile_id'
+    ];
+
     /**
      * @return Vaccine card
      */

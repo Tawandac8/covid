@@ -20,6 +20,7 @@ class CreateDosesTable extends Migration
             $table->integer('health_professional_id');
             $table->integer('health_facility_id');
             $table->integer('vaccine_id');
+            $table->integer('patient_profile_id');
         });
     }
 

@@ -24,6 +24,7 @@ class CreatePatientProfilesTable extends Migration
             $table->string('address');
             $table->string('city_id');
             $table->integer('covid_id')->nullable();
+            $table->longText('history')->nullable();
         });
     }
 

@@ -14,7 +14,10 @@ class VaccineController extends Controller
      */
     public function index()
     {
-        //
+
+        $vaccines = Vaccine::all();
+
+        return view('vaccine.index',['vaccines'=>$vaccines]);
     }
 
     /**
@@ -35,7 +38,14 @@ class VaccineController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $vaccine = Vaccine::create([
+            'name'=>$request->name,
+            'country_of_origin'=>$request->origin,
+            'efficacy'=>$request->efficacy,
+            'batch_number'=>$request->batch
+        ]);
+
+        return redirect()->back();
     }
 
     /**

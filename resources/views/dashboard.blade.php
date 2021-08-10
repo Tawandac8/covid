@@ -12,16 +12,13 @@
                 <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                   <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                     <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-                    <li class="breadcrumb-item"><a href="#">Dashboards</a></li>
+                    <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
                   </ol>
                 </nav>
               </div>
-              <div class="col-lg-6 col-5 text-right">
-                <a href="#" class="btn btn-sm btn-neutral">New</a>
-                <a href="#" class="btn btn-sm btn-neutral">Filters</a>
-              </div>
             </div>
             <!-- Card stats -->
+            @role('admin')
             <div class="row">
               <div class="col-xl-3 col-md-6">
                 <div class="card card-stats">
@@ -29,8 +26,8 @@
                   <div class="card-body">
                     <div class="row">
                       <div class="col">
-                        <h5 class="card-title text-uppercase text-muted mb-0">Total traffic</h5>
-                        <span class="h2 font-weight-bold mb-0">350,897</span>
+                        <h5 class="card-title text-uppercase text-muted mb-0">Total Users</h5>
+                        <span class="h2 font-weight-bold mb-0">{{ $users->count() }}</span>
                       </div>
                       <div class="col-auto">
                         <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
@@ -51,8 +48,8 @@
                   <div class="card-body">
                     <div class="row">
                       <div class="col">
-                        <h5 class="card-title text-uppercase text-muted mb-0">New Patients</h5>
-                        <span class="h2 font-weight-bold mb-0">2,356</span>
+                        <h5 class="card-title text-uppercase text-muted mb-0">Patients</h5>
+                        <span class="h2 font-weight-bold mb-0">{{ $patients->count() }}</span>
                       </div>
                       <div class="col-auto">
                         <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
@@ -73,8 +70,8 @@
                   <div class="card-body">
                     <div class="row">
                       <div class="col">
-                        <h5 class="card-title text-uppercase text-muted mb-0">Total Patients</h5>
-                        <span class="h2 font-weight-bold mb-0">924</span>
+                        <h5 class="card-title text-uppercase text-muted mb-0">Health Professionals</h5>
+                        <span class="h2 font-weight-bold mb-0">{{ $professionals->count() }}</span>
                       </div>
                       <div class="col-auto">
                         <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
@@ -95,8 +92,8 @@
                   <div class="card-body">
                     <div class="row">
                       <div class="col">
-                        <h5 class="card-title text-uppercase text-muted mb-0">Recoveries</h5>
-                        <span class="h2 font-weight-bold mb-0">49,65%</span>
+                        <h5 class="card-title text-uppercase text-muted mb-0">Health Facilities</h5>
+                        <span class="h2 font-weight-bold mb-0">{{ $facilities->count() }}</span>
                       </div>
                       <div class="col-auto">
                         <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
@@ -112,285 +109,219 @@
                 </div>
               </div>
             </div>
+            @endrole
           </div>
         </div>
       </div>
       <!-- Page content -->
       <div class="container-fluid mt--6">
-        <div class="row">
-          <div class="col-xl-8">
-            <div class="card bg-default">
-              <div class="card-header bg-transparent">
-                <div class="row align-items-center">
-                  <div class="col">
-                    <h6 class="text-light text-uppercase ls-1 mb-1">Overview</h6>
-                    <h5 class="h3 text-white mb-0">New Cases</h5>
-                  </div>
-                  <div class="col">
-                    <ul class="nav nav-pills justify-content-end">
-                      <li class="nav-item mr-2 mr-md-0" data-toggle="chart" data-target="#chart-sales-dark" data-update='{"data":{"datasets":[{"data":[0, 20, 10, 30, 15, 40, 20, 60, 60]}]}}' data-prefix="$" data-suffix="k">
-                        <a href="#" class="nav-link py-2 px-3 active" data-toggle="tab">
-                          <span class="d-none d-md-block">Month</span>
-                          <span class="d-md-none">M</span>
-                        </a>
-                      </li>
-                      <li class="nav-item" data-toggle="chart" data-target="#chart-sales-dark" data-update='{"data":{"datasets":[{"data":[0, 20, 5, 25, 10, 30, 15, 40, 40]}]}}' data-prefix="$" data-suffix="k">
-                        <a href="#" class="nav-link py-2 px-3" data-toggle="tab">
-                          <span class="d-none d-md-block">Week</span>
-                          <span class="d-md-none">W</span>
-                        </a>
-                      </li>
-                    </ul>
+          @role('admin')
+            <div class="row">
+                <div class="col-xl-8">
+                    <div class="card">
+                    <div class="card-header border-0">
+                        <div class="row align-items-center">
+                        <div class="col">
+                            <h3 class="mb-0">Health Facilities</h3>
+                        </div>
+
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <!-- Projects table -->
+                        <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">City</th>
+                            <th scope="col">Total Doses</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($facilities as $facility)
+                            <tr>
+                                <th scope="row">
+                                {{ $facility->name }}
+                                </th>
+                                <td>
+                                    {{ $facility->address }}
+                                </td>
+                                <td>
+                                    {{ $facility->city->name }}
+                                </td>
+                                <td>
+                                    {{ count($facility->doses) }}
+                                </td>
+                            </tr>
+                            @endforeach
+
+                        </tbody>
+                        </table>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-xl-4">
+                    <div class="card">
+                    <div class="card-header border-0">
+                        <div class="row align-items-center">
+                        <div class="col">
+                            <h3 class="mb-0">Health Professionals</h3>
+                        </div>
+                        <div class="col text-right">
+                            <a href="{{ route('professionals') }}" class="btn btn-sm btn-primary">See all</a>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <!-- Projects table -->
+                        <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                            <th scope="col">Facility</th>
+                            <th scope="col">Professionals</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($facilities as $facility)
+                            <tr>
+                                <th scope="row">
+                                {{ $facility->name }}
+                                </th>
+                                <td>
+                                {{ count($facility->professionals) }}
+                                </td>
+                            </tr>
+                            @endforeach
+
+
+                        </tbody>
+                        </table>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            @endrole
+            @role('professional')
+            <div class="header pb-6 d-flex align-items-center" style="min-height: 500px; background-image: url(../assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+                <!-- Mask -->
+                <span class="mask bg-gradient-default opacity-8"></span>
+                <!-- Header container -->
+                <div class="container-fluid d-flex align-items-center">
+                  <div class="row">
+                    <div class="col-lg-7 col-md-10">
+                      <h1 class="display-2 text-white">Hi, {{ $professional->first_name }}</h1>
+
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="card-body">
-                <!-- Chart -->
-                <div class="chart">
-                  <!-- Chart wrapper -->
-                  <canvas id="chart-sales-dark" class="chart-canvas"></canvas>
+              <!-- Page content -->
+              <div class="container-fluid mt--6">
+                <div class="row">
+                  <div class="col-xl-4 order-xl-2">
+                    <div class="card card-profile">
+
+                      <div class="row justify-content-center">
+                        <div class="col-lg-3 order-lg-2">
+
+                        </div>
+                      </div>
+
+                      <div class="card-body pt-0">
+
+                        <div class="text-center">
+                          <h5 class="h3">
+                            {{ $professional->first_name }} {{ $professional->last_name }}<span class="font-weight-light">, {{ $professional->title }}</span>
+                          </h5>
+                          <div class="h5 font-weight-300">
+                            <i class="ni location_pin mr-2"></i>{{ $professional->qualifications }}
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xl-8 order-xl-1">
+                    <div class="card">
+                      <div class="card-header">
+                        <div class="row align-items-center">
+                          <div class="col-8">
+                            <h3 class="mb-0">Edit profile </h3>
+                          </div>
+                          <div class="col-4 text-right">
+                            <a href="#!" class="btn btn-sm btn-primary">Settings</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-body">
+                        <form action="#" method="POST">
+                          @csrf
+                          <h6 class="heading-small text-muted mb-4">User information</h6>
+                          <div class="pl-lg-4">
+                            <div class="row">
+                              <div class="col-lg-6">
+                                <div class="form-group">
+                                  <label class="form-control-label" for="input-username">First Name</label>
+                                  <input type="text" id="input-username" value="{{ $professional->first_name }}" class="form-control" name="f_name">
+                                </div>
+                              </div>
+                              <div class="col-lg-6">
+                                <div class="form-group">
+                                  <label class="form-control-label" for="input-email">Last Name</label>
+                                  <input type="text" id="input-email" value="{{ $professional->last_name }}"  class="form-control" name="l_name">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-lg-6">
+                                <div class="form-group">
+                                  <label class="form-control-label" for="input-first-name">Title</label>
+                                  <input type="text" id="input-first-name" value="{{ $professional->title }}"  class="form-control" name="title">
+                                </div>
+                              </div>
+                              <div class="col-lg-6">
+                                <div class="form-group">
+                                  <label class="form-control-label" for="input-last-name">User ID</label>
+                                  <input type="number" value="{{ $professional->user->id }}"  id="input-last-name" class="form-control" name="user">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <hr class="my-4" />
+                          <!-- Address -->
+                          <h6 class="heading-small text-muted mb-4">Contact information</h6>
+                          <div class="pl-lg-4">
+                            <div class="row">
+                              <div class="col-md-12">
+                                <div class="form-group">
+                                  <label class="form-control-label" for="input-address">Phone</label>
+                                  <input id="input-address" value="{{ $professional->phone }}"  class="form-control" name="phone" type="text">
+                                </div>
+                              </div>
+                            </div>
+
+                            </div>
+
+                          </div>
+                          <hr class="my-4" />
+                          <!-- Description -->
+                          <h6 class="heading-small text-muted mb-4">Qualifications</h6>
+                          <div class="pl-lg-4">
+                            <div class="form-group">
+                              <label class="form-control-label">Qualifications</label>
+                              <textarea rows="4" name="qualifications" value=""  class="form-control">{{ $professional->qualifications }}</textarea>
+                            </div>
+                          </div>
+
+                        </form>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-xl-4">
-            <div class="card">
-              <div class="card-header bg-transparent">
-                <div class="row align-items-center">
-                  <div class="col">
-                    <h6 class="text-uppercase text-muted ls-1 mb-1">Mortality Rate</h6>
-                    <h5 class="h3 mb-0">Total Deaths</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body">
-                <!-- Chart -->
-                <div class="chart">
-                  <canvas id="chart-bars" class="chart-canvas"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xl-8">
-            <div class="card">
-              <div class="card-header border-0">
-                <div class="row align-items-center">
-                  <div class="col">
-                    <h3 class="mb-0">Page visits</h3>
-                  </div>
-                  <div class="col text-right">
-                    <a href="#!" class="btn btn-sm btn-primary">See all</a>
-                  </div>
-                </div>
-              </div>
-              <div class="table-responsive">
-                <!-- Projects table -->
-                <table class="table align-items-center table-flush">
-                  <thead class="thead-light">
-                    <tr>
-                      <th scope="col">Page name</th>
-                      <th scope="col">Visitors</th>
-                      <th scope="col">Unique users</th>
-                      <th scope="col">Bounce rate</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">
-                        /argon/
-                      </th>
-                      <td>
-                        4,569
-                      </td>
-                      <td>
-                        340
-                      </td>
-                      <td>
-                        <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        /argon/index.html
-                      </th>
-                      <td>
-                        3,985
-                      </td>
-                      <td>
-                        319
-                      </td>
-                      <td>
-                        <i class="fas fa-arrow-down text-warning mr-3"></i> 46,53%
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        /argon/charts.html
-                      </th>
-                      <td>
-                        3,513
-                      </td>
-                      <td>
-                        294
-                      </td>
-                      <td>
-                        <i class="fas fa-arrow-down text-warning mr-3"></i> 36,49%
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        /argon/tables.html
-                      </th>
-                      <td>
-                        2,050
-                      </td>
-                      <td>
-                        147
-                      </td>
-                      <td>
-                        <i class="fas fa-arrow-up text-success mr-3"></i> 50,87%
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        /argon/profile.html
-                      </th>
-                      <td>
-                        1,795
-                      </td>
-                      <td>
-                        190
-                      </td>
-                      <td>
-                        <i class="fas fa-arrow-down text-danger mr-3"></i> 46,53%
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-4">
-            <div class="card">
-              <div class="card-header border-0">
-                <div class="row align-items-center">
-                  <div class="col">
-                    <h3 class="mb-0">Social traffic</h3>
-                  </div>
-                  <div class="col text-right">
-                    <a href="#!" class="btn btn-sm btn-primary">See all</a>
-                  </div>
-                </div>
-              </div>
-              <div class="table-responsive">
-                <!-- Projects table -->
-                <table class="table align-items-center table-flush">
-                  <thead class="thead-light">
-                    <tr>
-                      <th scope="col">Referral</th>
-                      <th scope="col">Visitors</th>
-                      <th scope="col"></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">
-                        Facebook
-                      </th>
-                      <td>
-                        1,480
-                      </td>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <span class="mr-2">60%</span>
-                          <div>
-                            <div class="progress">
-                              <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        Facebook
-                      </th>
-                      <td>
-                        5,480
-                      </td>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <span class="mr-2">70%</span>
-                          <div>
-                            <div class="progress">
-                              <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        Google
-                      </th>
-                      <td>
-                        4,807
-                      </td>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <span class="mr-2">80%</span>
-                          <div>
-                            <div class="progress">
-                              <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        Instagram
-                      </th>
-                      <td>
-                        3,678
-                      </td>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <span class="mr-2">75%</span>
-                          <div>
-                            <div class="progress">
-                              <div class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        twitter
-                      </th>
-                      <td>
-                        2,645
-                      </td>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <span class="mr-2">30%</span>
-                          <div>
-                            <div class="progress">
-                              <div class="progress-bar bg-gradient-warning" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%;"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
+            @endrole
       </div>
 
 @endsection

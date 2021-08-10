@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HealthFacility;
 use App\Models\HealthProfessional;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,9 @@ class HealthProfessionalController extends Controller
      */
     public function index()
     {
-        //
+        $professionals = HealthProfessional::paginate(20);
+        $facilities = HealthFacility::all();
+        return view('care.index',['professionals'=>$professionals,'facilities'=>$facilities]);
     }
 
     /**
@@ -24,7 +27,7 @@ class HealthProfessionalController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -35,7 +38,17 @@ class HealthProfessionalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $professional = HealthProfessional::create([
+            'first_name'=> $request->f_name,
+            'last_name'=>$request->l_name,
+            'title'=>$request->title,
+            'phone'=>$request->phone,
+            'qualifications'=>$request->qualifications,
+            'health_facility_id'=>$request->facility,
+            'user_id'=>$request->user
+        ]);
+
+        return redirect()->back();
     }
 
     /**

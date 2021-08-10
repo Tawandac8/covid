@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
 use App\Models\HealthFacility;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,10 @@ class HealthFacilityController extends Controller
      */
     public function index()
     {
-        //
+        $facilities = HealthFacility::paginate(24);
+        $cities = City::all();
+
+        return view('facility.index',['facilities'=>$facilities,'cities'=>$cities]);
     }
 
     /**
@@ -35,7 +39,13 @@ class HealthFacilityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $facility = HealthFacility::create([
+            'name'=>$request->name,
+            'address'=>$request->address,
+            'city_id'=>$request->city
+        ]);
+
+        return redirect()->back();
     }
 
     /**

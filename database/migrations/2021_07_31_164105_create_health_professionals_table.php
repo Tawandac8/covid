@@ -19,8 +19,10 @@ class CreateHealthProfessionalsTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('title');
+            $table->string('phone');
             $table->longText('qualifications')->nullable();
-            $table->integer('health_practice_id');
+            $table->integer('health_facility_id')->nullable();
+            $table->integer('user_id');
         });
     }
 

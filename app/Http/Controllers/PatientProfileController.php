@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
+use App\Models\Dose;
 use App\Models\PatientProfile;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,10 @@ class PatientProfileController extends Controller
      */
     public function index()
     {
-        //
+        $patients = PatientProfile::paginate(20);
+        $cities = City::all();
+
+        return view('patient.index',['patients'=>$patients,'cities'=>$cities]);
     }
 
     /**
@@ -35,7 +40,17 @@ class PatientProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $patient = PatientProfile::create([
+            'first_name'=> $request->f_name,
+            'last_name'=>$request->l_name,
+            'id_number'=>$request->id,
+            'age'=>$request->age,
+            'phone'=>$request->phone,
+            'address'=>$request->address,
+            'city_id'=>$request->city,
+            'history'=>$request->history
+        ]);
+        return redirect()->back();
     }
 
     /**
@@ -44,9 +59,13 @@ class PatientProfileController extends Controller
      * @param  \App\Models\PatientProfile  $patientProfile
      * @return \Illuminate\Http\Response
      */
-    public function show(PatientProfile $patientProfile)
+    public function show($id)
     {
-        //
+        $patient = PatientProfile::where('id',$id)->first();
+
+        $doses = Dose::where('patient_profile_id',$patient->id)->get();
+
+        return view('patient.show',['patient'=>$patient,'doses'=>$doses]);
     }
 
     /**
