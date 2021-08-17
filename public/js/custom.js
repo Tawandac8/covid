@@ -32,11 +32,22 @@ if (review.length) {
   });
 }
 
-//------- Mailchimp js --------//  
+//------- Mailchimp js --------//
 function mailChimp() {
   $('#mc_embed_signup').find('form').ajaxChimp();
 }
 mailChimp();
 
+$('.report').click(function(){
+    $('.backdrop').fadeIn('slow','swing',function(){
+        $('.reaction-modal').fadeIn('fast','swing')
+    })
+})
+
+$('.vaccinated').click(function(){
+    $('.backdrop').fadeIn('slow','swing',function(){
+        $('.vac-modal').fadeIn('fast','swing')
+    })
+})
 
 }(jQuery));

@@ -40,12 +40,9 @@
                     <div class="banner_text">
                         <div class="banner_text_iner">
                             <h5>We are here for your care</h5>
-                            <h1>Best Care &
-                                Better Doctor</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing
-                                elit sed do eiusmod tempor incididunt ut labore et dolore
-                                magna aliqua. Quis ipsum suspendisse ultrices gravida.Risus cmodo viverra </p>
-                            <a href="#" class="btn_2">Make an appointment</a>
+                            <h1>Get Vaccinated & Protect Yourself &Loved Ones</h1>
+                            <a href="#" class="btn_2 vaccinated">Get Vaccinated</a>
+                            <a href="#" class="btn_2 report">Report Reaction</a>
 
                         </div>
                     </div>
@@ -73,7 +70,7 @@
                     <div class="about_us_text">
                         <h2>Login</h2>
 
-                            <form class="form-contact contact_form" action="{{ route('login') }}" method="post" 
+                            <form class="form-contact contact_form" action="{{ route('login') }}" method="post"
                               novalidate="novalidate">
                               @csrf
                               <div class="row">
@@ -100,6 +97,55 @@
             </div>
         </div>
     </section>
+    <div class="backdrop"></div>
+    <div class="reaction-modal">
+        <h2>Report Reaction</h2>
+            <form class="form-contact contact_form" action="" method="post"
+                              novalidate="novalidate">
+                              @csrf
+                              <div class="row">
+                                <div class="col-12">
+                                  <div class="form-group">
+                                    <input class="form-control" name="email" id="subject" type="email" onfocus="this.placeholder = ''"
+                                      onblur="this.placeholder = 'Enter Email'" placeholder='Enter Email'>
+                                  </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                      <input class="form-control" name="password" id="subject" type="password" onfocus="this.placeholder = ''"
+                                        onblur="this.placeholder = 'Enter password'" placeholder='Enter Password'>
+                                    </div>
+                                  </div>
+                              </div>
+                              <div class="form-group mt-3">
+                                <button type="submit" class=" btn_2">Report</button>
+                              </div>
+                            </form>
+    </div>
+    <div class="vac-modal">
+        <h2>Where Can I Get Vaccinated</h2>
+            <form class="form-contact contact_form" action="" method="post"
+                              novalidate="novalidate">
+                              @csrf
+                              <div class="row">
+                                <div class="col-12">
+                                  <div class="form-group">
+                                    <input class="form-control" name="email" id="subject" type="email" onfocus="this.placeholder = ''"
+                                      onblur="this.placeholder = 'Enter Email'" placeholder='Enter Email'>
+                                  </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                      <input class="form-control" name="password" id="subject" type="password" onfocus="this.placeholder = ''"
+                                        onblur="this.placeholder = 'Enter password'" placeholder='Enter Password'>
+                                    </div>
+                                  </div>
+                              </div>
+                              <div class="form-group mt-3">
+                                <button type="submit" class=" btn_2">Report</button>
+                              </div>
+                            </form>
+    </div>
     <!-- about us part end-->
     <!-- jquery plugins here-->
 
