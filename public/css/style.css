@@ -86,6 +86,10 @@ input:hover, input:focus {
     margin-bottom: 30px;
 }
 
+.select-city{
+    width: 100%;
+}
+
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
   /* line 18, ../../01 cl html template/03_jun 2019/182_medico_html/sass/_common.scss */
   .section_padding {

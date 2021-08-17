@@ -40,7 +40,7 @@
                     <div class="banner_text">
                         <div class="banner_text_iner">
                             <h5>We are here for your care</h5>
-                            <h1>Get Vaccinated & Protect Yourself &Loved Ones</h1>
+                            <h1>Vaccination Point</h1>
                             <a href="#" class="btn_2 vaccinated">Get Vaccinated</a>
                             <a href="#" class="btn_2 report">Report Reaction</a>
 
@@ -123,26 +123,25 @@
                             </form>
     </div>
     <div class="vac-modal">
-        <h2>Where Can I Get Vaccinated</h2>
+        <h2>Get Vaccinated</h2>
             <form class="form-contact contact_form" action="" method="post"
                               novalidate="novalidate">
                               @csrf
                               <div class="row">
                                 <div class="col-12">
                                   <div class="form-group">
-                                    <input class="form-control" name="email" id="subject" type="email" onfocus="this.placeholder = ''"
-                                      onblur="this.placeholder = 'Enter Email'" placeholder='Enter Email'>
+                                    <select class="form-control city select-city" name="city" id="city">
+                                        <option value="" selected disabled>Select City</option>
+                                        @foreach ($cities as $city)
+                                        <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                        @endforeach
+                                    </select>
                                   </div>
                                 </div>
-                                <div class="col-12">
-                                    <div class="form-group">
-                                      <input class="form-control" name="password" id="subject" type="password" onfocus="this.placeholder = ''"
-                                        onblur="this.placeholder = 'Enter password'" placeholder='Enter Password'>
-                                    </div>
-                                  </div>
+
                               </div>
                               <div class="form-group mt-3">
-                                <button type="submit" class=" btn_2">Report</button>
+                                <button type="submit" class=" btn_2">Select City</button>
                               </div>
                             </form>
     </div>

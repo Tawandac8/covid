@@ -7,6 +7,7 @@ use App\Http\Controllers\HealthProfessionalController;
 use App\Http\Controllers\PatientProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VaccineController;
+use App\Http\Controllers\Welcome;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,9 +21,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/', [Welcome::class,'index'])->name('welcome');
 
 Route::get('/dashboard',[Dashboard::class,'index'])->middleware(['auth'])->name('dashboard');
 
