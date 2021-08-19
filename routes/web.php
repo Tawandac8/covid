@@ -5,9 +5,12 @@ use App\Http\Controllers\DoseController;
 use App\Http\Controllers\HealthFacilityController;
 use App\Http\Controllers\HealthProfessionalController;
 use App\Http\Controllers\PatientProfileController;
+use App\Http\Controllers\PointsController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VaccineController;
 use App\Http\Controllers\Welcome;
+use App\Models\Report;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,6 +46,8 @@ Route::get('/users',[UserController::class,'index'])->name('users');
 
 Route::post('/user/add',[UserController::class,'store'])->name('user.add');
 
+Route::get('/reports',[ReportController::class,'index'])->name('reports');
+
 });
 
 Route::group(['middleware' => ['auth']], function () {
@@ -61,3 +66,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 });
+
+Route::post('/report',[ReportController::class,'store'])->name('report');
+
+Route::post('/points',[PointsController::class,'index']);

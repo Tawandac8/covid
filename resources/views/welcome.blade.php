@@ -40,7 +40,7 @@
                     <div class="banner_text">
                         <div class="banner_text_iner">
                             <h5>We are here for your care</h5>
-                            <h1>Vaccination Point</h1>
+                            <h1>Get Vaccinated & Preserve Lives</h1>
                             <a href="#" class="btn_2 vaccinated">Get Vaccinated</a>
                             <a href="#" class="btn_2 report">Report Reaction</a>
 
@@ -100,36 +100,51 @@
     <div class="backdrop"></div>
     <div class="reaction-modal">
         <h2>Report Reaction</h2>
-            <form class="form-contact contact_form" action="" method="post"
+            <form class="form-contact contact_form" action="{{ route('report') }}" method="post"
                               novalidate="novalidate">
                               @csrf
                               <div class="row">
                                 <div class="col-12">
                                   <div class="form-group">
-                                    <input class="form-control" name="email" id="subject" type="email" onfocus="this.placeholder = ''"
-                                      onblur="this.placeholder = 'Enter Email'" placeholder='Enter Email'>
+                                    <input class="form-control" name="name" id="subject" type="text" placeholder='Full Name'>
                                   </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                      <input class="form-control" name="password" id="subject" type="password" onfocus="this.placeholder = ''"
-                                        onblur="this.placeholder = 'Enter password'" placeholder='Enter Password'>
+                                      <input class="form-control" name="id_no" id="subject" type="text" placeholder='ID Number'>
                                     </div>
-                                  </div>
-                              </div>
-                              <div class="form-group mt-3">
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                      <input class="form-control" name="dose_no" id="subject" type="text" placeholder='Dose Nomber'>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                      <select class="form-control city select-city" name="facility" id="city">
+                                          <option value="" selected disabled>Where were you vaccinated</option>
+                                          @foreach ($facilities as $facility)
+                                          <option value="{{ $facility->id }}">{{ $facility->name }}</option>
+                                          @endforeach
+                                      </select>
+                                    </div>
+                                </div>
+                                <div class="form-group mt-3">
                                 <button type="submit" class=" btn_2">Report</button>
+                                </div>
                               </div>
                             </form>
     </div>
     <div class="vac-modal">
         <h2>Get Vaccinated</h2>
-            <form class="form-contact contact_form" action="" method="post"
+            <form class="form-contact contact_form vaccination" action="" method="post"
                               novalidate="novalidate">
                               @csrf
+                              {{ csrf_field() }}
                               <div class="row">
                                 <div class="col-12">
                                   <div class="form-group">
+
                                     <select class="form-control city select-city" name="city" id="city">
                                         <option value="" selected disabled>Select City</option>
                                         @foreach ($cities as $city)
@@ -140,10 +155,11 @@
                                 </div>
 
                               </div>
-                              <div class="form-group mt-3">
-                                <button type="submit" class=" btn_2">Select City</button>
-                              </div>
-                            </form>
+
+            </form>
+    </div>
+    <div class="vac-points">
+
     </div>
     <!-- about us part end-->
     <!-- jquery plugins here-->

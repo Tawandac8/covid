@@ -71,6 +71,14 @@
               </li>
               @endrole
               @role('admin')
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('reports') }}">
+                  <i class="ni ni-planet text-orange"></i>
+                  <span class="nav-link-text">Reaction Reports</span>
+                </a>
+              </li>
+              @endrole
+              @role('admin')
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('professionals') }}">
                   <i class="ni ni-planet text-orange"></i>

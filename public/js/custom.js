@@ -47,7 +47,25 @@ $('.report').click(function(){
 $('.vaccinated').click(function(){
     $('.backdrop').fadeIn('slow','swing',function(){
         $('.vac-modal').fadeIn('fast','swing')
+
+        $('.vaccination select').change(function(){
+            var _token = $('.vaccination input[name="_token"]').val()
+            var city = $('.vaccination select').val()
+
+            $('.vac-modal').fadeOut('fast','swing',function(){$('.vac-points').fadeIn('fast','swing')})
+
+            $.ajax({
+                type: "post",
+                url: "/points",
+                data: {'city':city,_token:_token},
+                success: function (response) {
+                    $('.vac-points').html(response)
+                }
+            });
+        })
     })
 })
+
+
 
 }(jQuery));

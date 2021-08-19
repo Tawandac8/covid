@@ -78,6 +78,27 @@ input:hover, input:focus {
     display: none;
 }
 
+.vac-points{
+    background: #fff;
+    width: 400px;
+    height: auto;
+    position: fixed;
+    left:40%;
+    top:20%;
+    z-index: 2001;
+    padding:20px;
+    display: none;
+}
+
+.vac-points ul li{
+    border-bottom:1px solid #7dc4ff;
+    padding: 10px 0;
+}
+
+.vac-points ul li:last-child{
+    border: none;
+}
+
 .reaction-modal h2{
     margin-bottom: 30px;
 }

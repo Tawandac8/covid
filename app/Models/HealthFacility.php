@@ -29,4 +29,12 @@ class HealthFacility extends Model
     public function professionals(){
         return $this->hasMany(HealthProfessional::class);
     }
+
+    public function reports(){
+        return $this->hasMany(Report::class);
+    }
+
+    public function point(){
+        return $this->belongsTo(Points::class);
+    }
 }
