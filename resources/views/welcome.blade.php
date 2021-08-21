@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Health Care</title>
+    <title>Covid  19 Vaccine Management System</title>
     <link rel="icon" href="img/favicon.png">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}">
@@ -28,12 +28,8 @@
 </head>
 
 <body>
-    <!--::header part start::-->
-
-    <!-- Header part end-->
-
-    <!-- banner part start-->
-    <section class="banner_part">
+    <section class="banner_part" style="background:url({{ asset('storage/covid.png') }});background-repeat: no-repeat;
+    background-size: contain;">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-5 col-xl-5">
@@ -49,7 +45,7 @@
                 </div>
                 <div class="col-lg-7">
                     <div class="banner_img">
-                        <img src="{{ asset('storage/banner_img.png') }}" alt="">
+                        
                     </div>
                 </div>
             </div>

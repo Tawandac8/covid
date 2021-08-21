@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
   <meta name="author" content="Creative Tim">
-  <title>Health System</title>
+  <title>Covid  19 Vaccine Management System</title>
   <!-- Favicon -->
   <link rel="icon" href="" type="image/png">
   <!-- Fonts -->
@@ -42,7 +42,7 @@
       <!-- Brand -->
       <div class="sidenav-header  align-items-center">
         <a class="navbar-brand" href="{{ route('welcome') }}">
-          <h3>HEALTH SYSTEM</h3>
+          <h3>Covid 19 VMS</h3>
         </a>
       </div>
       <div class="navbar-inner">

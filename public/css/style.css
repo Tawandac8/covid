@@ -88,7 +88,9 @@ input:hover, input:focus {
     z-index: 2001;
     padding:20px;
     display: none;
+    
 }
+
 
 .vac-points ul li{
     border-bottom:1px solid #7dc4ff;
@@ -174,67 +176,67 @@ input:hover, input:focus {
 
 /* line 48, ../../01 cl html template/03_jun 2019/182_medico_html/sass/_common.scss */
 .padding_top {
-  padding-top: 140px;
+  padding-top: 50px !important;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
   /* line 48, ../../01 cl html template/03_jun 2019/182_medico_html/sass/_common.scss */
   .padding_top {
-    padding-top: 80px;
+    padding-top: 50px;
   }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   /* line 48, ../../01 cl html template/03_jun 2019/182_medico_html/sass/_common.scss */
   .padding_top {
-    padding-top: 70px;
+    padding-top: 50px;
   }
 }
 
 @media (max-width: 576px) {
   /* line 48, ../../01 cl html template/03_jun 2019/182_medico_html/sass/_common.scss */
   .padding_top {
-    padding-top: 70px;
+    padding-top: 50px;
   }
 }
 
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   /* line 48, ../../01 cl html template/03_jun 2019/182_medico_html/sass/_common.scss */
   .padding_top {
-    padding-top: 70px;
+    padding-top: 50px;
   }
 }
 
 /* line 63, ../../01 cl html template/03_jun 2019/182_medico_html/sass/_common.scss */
 .padding_bottom {
-  padding-bottom: 140px;
+  padding-bottom: 50px;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
   /* line 63, ../../01 cl html template/03_jun 2019/182_medico_html/sass/_common.scss */
   .padding_bottom {
-    padding-bottom: 80px;
+    padding-bottom: 50px;
   }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   /* line 63, ../../01 cl html template/03_jun 2019/182_medico_html/sass/_common.scss */
   .padding_bottom {
-    padding-bottom: 70px;
+    padding-bottom: 50px;
   }
 }
 
 @media (max-width: 576px) {
   /* line 63, ../../01 cl html template/03_jun 2019/182_medico_html/sass/_common.scss */
   .padding_bottom {
-    padding-bottom: 70px;
+    padding-bottom: 50px;
   }
 }
 
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   /* line 63, ../../01 cl html template/03_jun 2019/182_medico_html/sass/_common.scss */
   .padding_bottom {
-    padding-bottom: 70px;
+    padding-bottom: 50px;
   }
 }
 
@@ -2564,7 +2566,7 @@ ul {
 /**************** banner part css start ****************/
 /* line 2, ../../01 cl html template/03_jun 2019/182_medico_html/sass/_banner.scss */
 .banner_part {
-  height: 935px;
+  height: 650px;
   position: relative;
   overflow: hidden;
   background-image: url(../img/banner_bg.png);
@@ -2593,14 +2595,16 @@ ul {
 .banner_part .banner_text {
   display: table;
   width: 100%;
-  height: 935px;
+  height: auto;
+  padding-top: 80px;
+  color: #fff !important;
 }
 
 /* line 26, ../../01 cl html template/03_jun 2019/182_medico_html/sass/_banner.scss */
 .banner_part .banner_text .banner_text_iner {
   display: table-cell;
   vertical-align: middle;
-  padding-top: 155px;
+  padding-top: 50px;
 }
 
 @media (max-width: 991px) {
@@ -2615,7 +2619,7 @@ ul {
   /* line 26, ../../01 cl html template/03_jun 2019/182_medico_html/sass/_banner.scss */
   .banner_part .banner_text .banner_text_iner {
     padding-top: 0;
-    padding-top: 100px;
+    padding-top: 50px;
   }
 }
 
@@ -2658,7 +2662,7 @@ ul {
   font-size: 14px;
   text-transform: capitalize;
   font-weight: 500;
-  color: #242429;
+  color: #fff;
   margin-bottom: 0;
   font-family: "Roboto", sans-serif;
 }
@@ -2670,6 +2674,7 @@ ul {
   font-weight: 700;
   margin-bottom: 12px;
   line-height: 1.2;
+  color:#fff !important;
 }
 
 @media (max-width: 576px) {
