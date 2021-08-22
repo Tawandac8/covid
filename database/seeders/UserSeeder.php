@@ -24,11 +24,14 @@ class UserSeeder extends Seeder
         $edit_patient = Permission::create(['name' => 'edit patient']);
 
         $professional->syncPermissions([$add_patient]);
+        $admin->syncPermissions([$add_patient]);
         $user = User::create([
             'name'=>'Tawanda',
             'email'=>'tawanda@micre8ion.com',
             'password'=>Hash::make('ch1b@y1w@')
         ]);
+
+        $user->assignRole('admin');
 
         $user2 = User::create([
             'name'=>'R1914695M',
