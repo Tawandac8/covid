@@ -38,7 +38,7 @@
                 <tr>
                     <th scope="col" class="sort" data-sort="completion">Name</th>
                   <th scope="col" class="sort" data-sort="name">Country Of Origin</th>
-                  <th scope="col" class="sort" data-sort="budget">Efficacy</th>
+                  <th scope="col" class="sort" data-sort="budget">Quantity</th>
                   <th scope="col" class="sort" data-sort="budget">Batch Number</th>
                   <th scope="col"></th>
                 </tr>
@@ -117,7 +117,7 @@
                 </div>
                 <div class="col-lg-12">
                     <div class="form-group">
-                      <label class="form-control-label" for="input-email">Efficacy Rate</label>
+                      <label class="form-control-label" for="input-email">Quantity</label>
                       <input type="number" id="input-email" class="form-control" name="efficacy">
                     </div>
                   </div>
