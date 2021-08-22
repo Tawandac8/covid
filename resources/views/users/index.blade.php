@@ -35,6 +35,7 @@
             <table class="table align-items-center table-flush">
               <thead class="thead-light">
                 <tr>
+                    <th scope="col" class="sort" data-sort="completion">User ID</th>
                     <th scope="col" class="sort" data-sort="completion">Name</th>
                   <th scope="col" class="sort" data-sort="name">Email</th>
                   <th scope="col" class="sort" data-sort="budget">Role</th>
@@ -44,6 +45,9 @@
               <tbody class="list">
                   @foreach ($users as $user )
                   <tr>
+                    <td>
+                        <span class="status">{{ $user->id }}</span>
+                      </td>
                     <td>
                         <span class="status">{{ $user->name }}</span>
                       </td>
